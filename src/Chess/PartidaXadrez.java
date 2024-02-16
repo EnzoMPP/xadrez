@@ -1,12 +1,16 @@
 package Chess;
 
+import Board.Posicao;
 import Board.Tabuleiro;
+import Pecas.Xadrez.Rei;
+import Pecas.Xadrez.Torre;
 
 public class PartidaXadrez {
     private Tabuleiro tabuleiro;
 
     public PartidaXadrez() {
         tabuleiro=new Tabuleiro(8,8);
+        ConfigIniciais();
     }
 
     public PecaXadrez[][] getPecas()
@@ -22,6 +26,13 @@ public class PartidaXadrez {
         }
         return  mat;
 
+    }
+
+    private void ConfigIniciais()
+    {
+        tabuleiro.AlocarPeca(new Torre(tabuleiro,Cor.Branco),new Posicao(0,0));
+        tabuleiro.AlocarPeca(new Rei(tabuleiro,Cor.Preto),new Posicao(7,4));
+        tabuleiro.AlocarPeca(new Rei(tabuleiro,Cor.Branco),new Posicao(0,4));
     }
 
 }
