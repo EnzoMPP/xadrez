@@ -24,4 +24,10 @@ public class Posicao {
     public void setColuna(int coluna) {
         Coluna = coluna;
     }
+
+    @Override
+    public String toString() {
+        return Linha +
+                "," + Coluna;
+    }
 }
