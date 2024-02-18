@@ -28,11 +28,16 @@ public class PartidaXadrez {
 
     }
 
+    private void colocarNovaPeca(char coluna, int linha, PecaXadrez peca)
+    {
+        tabuleiro.AlocarPeca(peca,new ChessPosition(coluna,linha).toPosicao());
+    }
+
     private void ConfigIniciais()
     {
-        tabuleiro.AlocarPeca(new Torre(tabuleiro,Cor.Branco),new Posicao(1,1));
-        tabuleiro.AlocarPeca(new Rei(tabuleiro,Cor.Preto),new Posicao(7,4));
-        tabuleiro.AlocarPeca(new Rei(tabuleiro,Cor.Branco),new Posicao(0,4));
+        colocarNovaPeca('A',1,new Torre(tabuleiro,Cor.Branco));
+        colocarNovaPeca('E',1, new Rei(tabuleiro,Cor.Branco));
+        colocarNovaPeca('E',8,new Rei(tabuleiro,Cor.Preto));
     }
 
 }
