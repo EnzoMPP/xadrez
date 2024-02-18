@@ -21,7 +21,7 @@ public class PartidaXadrez {
         {
             for(int j=0; j< tabuleiro.getColunas();j++)
             {
-                mat[i][j]= (PecaXadrez)tabuleiro.peca(i,j);
+                mat[i][j]= (PecaXadrez) tabuleiro.peca(i,j);
             }
         }
         return  mat;
@@ -30,7 +30,7 @@ public class PartidaXadrez {
 
     private void ConfigIniciais()
     {
-        tabuleiro.AlocarPeca(new Torre(tabuleiro,Cor.Branco),new Posicao(0,0));
+        tabuleiro.AlocarPeca(new Torre(tabuleiro,Cor.Branco),new Posicao(1,1));
         tabuleiro.AlocarPeca(new Rei(tabuleiro,Cor.Preto),new Posicao(7,4));
         tabuleiro.AlocarPeca(new Rei(tabuleiro,Cor.Branco),new Posicao(0,4));
     }
