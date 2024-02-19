@@ -30,6 +30,10 @@ public class Ui
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 
     public static ChessPosition LerPosicao  (Scanner sc)
     {
@@ -43,6 +47,7 @@ public class Ui
         {
             throw new IndexOutOfBoundsException("Erro lendo posição de xadrez, a1 até h8");
         }
+
 
     }
 

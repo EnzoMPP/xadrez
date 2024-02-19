@@ -53,6 +53,10 @@ public class PartidaXadrez {
             throw new ChessException("Não existe peça na posção de origem");
 
         }
+        if(!tabuleiro.peca(posicao).algumMovimento())
+        {
+            throw new ChessException("Peça sem movimentos possívies");
+        }
     }
 
     private void colocarNovaPeca(char coluna, int linha, PecaXadrez peca)

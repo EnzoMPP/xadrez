@@ -7,6 +7,7 @@ import Chess.ChessPosition;
 import Chess.PartidaXadrez;
 import Chess.PecaXadrez;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -16,16 +17,34 @@ public class Main {
 
         PartidaXadrez partida= new PartidaXadrez();
         while (true) {
-            Ui.mostrarTabuleiro(partida.getPecas());
-            System.out.println();
-            System.out.println("Source");
-            ChessPosition source= Ui.LerPosicao(sc);
+            try {
+                Ui.clearScreen();
+                Ui.mostrarTabuleiro(partida.getPecas());
+                System.out.println();
+                System.out.println("Source");
+                ChessPosition source = Ui.LerPosicao(sc);
 
-            System.out.println();
-            System.out.println("Target: ");
-            ChessPosition target= Ui.LerPosicao(sc);
+                System.out.println();
+                System.out.println("Target: ");
+                ChessPosition target = Ui.LerPosicao(sc);
 
-            PecaXadrez pecaCapturada= partida.MovimentoPeca(source,target);
+                PecaXadrez pecaCapturada = partida.MovimentoPeca(source, target);
+            }
+            catch (ChessException e)
+            {
+                System.out.println(e.getMessage());
+                sc.nextLine();
+            }
+            catch (InputMismatchException e)
+            {
+                System.out.println(e.getMessage());
+                sc.nextLine();
+            }
+            catch(IndexOutOfBoundsException e)
+            {
+                System.out.println(e.getMessage());
+                sc.nextLine();
+            }
         }
 
     }
