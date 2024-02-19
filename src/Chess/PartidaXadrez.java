@@ -1,5 +1,6 @@
 package Chess;
 
+import Board.Peca;
 import Board.Posicao;
 import Board.Tabuleiro;
 import Pecas.Xadrez.Rei;
@@ -26,6 +27,32 @@ public class PartidaXadrez {
         }
         return  mat;
 
+    }
+    public  PecaXadrez MovimentoPeca(ChessPosition anterior, ChessPosition posterior)
+    {
+        Posicao antes= anterior.toPosicao();
+        Posicao depois= posterior.toPosicao();
+
+        validarPosicao(antes);
+        Peca pecaCapturada= fazerMovimento(antes,depois);
+
+        return (PecaXadrez)pecaCapturada;
+    }
+
+    private Peca fazerMovimento(Posicao antes, Posicao depois)
+    {
+        Peca a=tabuleiro.removerPeca(antes);
+        Peca d = tabuleiro.removerPeca(depois);
+        tabuleiro.AlocarPeca(a,depois);
+        return  d;
+    }
+    private void validarPosicao(Posicao posicao)
+    {
+        if(tabuleiro.ExistePeca(posicao))
+        {
+            throw new ChessException("Não existe peça na posção de origem");
+
+        }
     }
 
     private void colocarNovaPeca(char coluna, int linha, PecaXadrez peca)

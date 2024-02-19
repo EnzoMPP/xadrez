@@ -44,7 +44,7 @@ public class Tabuleiro {
 
     public void AlocarPeca(Peca peca, Posicao posicao)
     {
-      if(ExistePeca(posicao))
+      if(!ExistePeca(posicao))
         {
             throw new BoardException("Posição já ocupada");
         }
@@ -52,6 +52,22 @@ public class Tabuleiro {
         pecas[posicao.getLinha()][posicao.getColuna()]=peca;
         peca.posicao=posicao;
 
+    }
+
+    public Peca removerPeca(Posicao posicao)
+    {
+        if(!posicaoExistente(posicao))
+        {
+            throw new BoardException("Posição inexistente");
+        }
+        if(peca(posicao)==null)
+        {
+            return null;
+        }
+        Peca aux= peca(posicao);
+        aux.posicao=null;
+        pecas[posicao.getLinha()][posicao.getColuna()]=null;
+        return aux;
     }
     public boolean posicaoExistente( int linha, int coluna)
     {
@@ -71,6 +87,6 @@ public class Tabuleiro {
             throw new BoardException("Posição inexistente");
         }
 
-        return  peca(posicao) != null;
+        return  peca(posicao) == null;
     }
 }

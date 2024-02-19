@@ -1,8 +1,11 @@
 package Aplicação;
 
 import Board.Peca;
+import Chess.ChessPosition;
 import Chess.Cor;
 import Chess.PecaXadrez;
+
+import java.util.Scanner;
 
 public class Ui
 {
@@ -26,6 +29,22 @@ public class Ui
     public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+
+    public static ChessPosition LerPosicao  (Scanner sc)
+    {
+        try {
+            String s = sc.nextLine();
+            char coluna = s.charAt(0);
+            int Linha = Integer.parseInt(s.substring(1));
+            return new ChessPosition(coluna, Linha);
+        }
+        catch (RuntimeException e)
+        {
+            throw new IndexOutOfBoundsException("Erro lendo posição de xadrez, a1 até h8");
+        }
+
+    }
 
     public static void mostrarTabuleiro(PecaXadrez[][] pecas)
     {
